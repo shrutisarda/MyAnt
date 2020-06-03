@@ -21,4 +21,16 @@
     <target name="run">
         <java jar="build/jar/HelloWorld.jar" fork="true"/>
     </target>
+    
+    <!-- 	This task is Used to Unit-Test the Compiled Java Files -->
+	<target name="test">
+		<junit printsummary="yes" fork="true" haltonfailure="yes">
+			<classpath refid="jUnit.cp" />
+			<formatter type="plain" />
+			<batchtest fork="yes" todir="${test.reports.dir}">
+				<fileset dir="${src.dir}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
   </project>
